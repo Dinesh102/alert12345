@@ -6,15 +6,30 @@
     <script>
         $(document).ready(function() {  
             alert("1");                     
-            $('#somebutton').click(function() { 
-                alert("2");
-                $.post('GetUserServlet', function(re) { 
-                    $('#somediv').text(re);       
-                    alert("3"+re);
+            $('#listbutton').click(function() { 
+                    alert("list");
+                // alert("2");
+                $.post('GetUserServlet', function() { 
+               
                 });
-                alert("4");
+                // alert("4");
             });
-            alert("5");
+            // alert("5");
+            // alert("6");
+        // $(document).ready(function() {  
+            $('#insertbutton').click(function() { 
+                alert("insert");
+                $.get('GetUserServlet', function() {        
+                     });
+                     });
+        // });
+        // $(document).ready(function() {  
+            // $('#listbutton').click(function() {
+            //     alert("list");
+            //     $.put('GetUserServlet', function() {  });
+            //          });
+        // });
+
         });
 
         // $("#somebutton").click(function(){
@@ -38,6 +53,33 @@
 </head>
 <body>
 
-    <button id="somebutton">press here</button>
+    <button id="insertbutton">insert</button>
+    <button id="deletebutton">delete</button>
+    <button id="editbutton">edit</button>
+    <button id="listbutton">list</button>
     <p id="somediv"> </p>
 </body>
+<script>
+      $.ajax
+        (
+        {
+            url:'GetUserServlet',
+            data:{name:'abc'},
+            type:'put',
+            cache:false,
+            success:function(data){alert(data);},
+            error:function(){alert('error');}
+        }
+    );
+    $.ajax
+        (
+        {
+            url:'GetUserServlet',
+            data:{name:'abc'},
+            type:'delete',
+            cache:false,
+            success:function(data){alert(data);},
+            error:function(){alert('error');}
+        }
+    );
+</script>

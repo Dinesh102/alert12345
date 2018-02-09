@@ -3,19 +3,61 @@
 <head>
     <title>SO question 4112686</title>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+    function edit(){
+      $.ajax
+        (
+        {
+            url:'GetUserServlet',
+            //data:{name:'abc'},
+            type:'put',
+             //cache:false,
+            success:function(){alert("edit");},
+             }
+    );
+    }
+    function del(){
+    $.ajax
+        (
+        {
+            
+            url:'GetUserServlet',
+            // data:{name:'abc'},
+            type:'delete',
+            // cache:false,
+             success:function(){alert("delete");},
+            }
+    
+    );
+    }
+</script>
     <script>
         $(document).ready(function() {  
             alert("1");                     
-            $('#somebutton').click(function() { 
-                alert("2");
+            $('#listbutton').click(function() { 
+                    alert("list");
+                // alert("2");
                 $.post('GetUserServlet', function() { 
-                    $('#somediv').text("dinesh");       
-                    alert("3");
+               
                 });
-                alert("4");
+                // alert("4");
             });
-            alert("5");
-            alert("6");
+            // alert("5");
+            // alert("6");
+        // $(document).ready(function() {  
+            $('#insertbutton').click(function() { 
+                alert("insert");
+                $.get('GetUserServlet', function() {        
+                     });
+                     });
+        // });
+        // $(document).ready(function() {  
+            // $('#listbutton').click(function() {
+            //     alert("list");
+            //     $.put('GetUserServlet', function() {  });
+            //          });
+        // });
+
         });
 
         // $("#somebutton").click(function(){
@@ -36,9 +78,13 @@
 // }
 // );
     </script>
+
 </head>
 <body>
 
-    <button id="somebutton">press here</button>
+    <button id="insertbutton">insert</button>
+    <button id="deletebutton" onclick="del()">delete</button>
+    <button id="editbutton" onclick="edit()">edit</button>
+    <button id="listbutton">list</button>
     <p id="somediv"> </p>
 </body>
